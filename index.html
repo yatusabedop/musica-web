@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reproductor Premium de Musica con Letras Sincronizadas">
+  <title>Francés Limón | Enanitos Verdes Player</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <!-- VIDEO EN BUCLE DE FONDO DE ENANITOS VERDES -->
+  <div class="video-bg-container">
+    <video autoplay loop muted playsinline id="bg-video">
+      <source src="enanitos.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <main class="stage">
+    <header class="topbar">
+      <span class="back-btn">← Back</span>
+      <span class="track-number">01 / 01</span>
+    </header>
+
+    <!-- EL REPRODUCTOR TRANSPARENTE CENTRAL -->
+    <section class="spotify-card">
+      
+      <!-- Sección Superior: Info del Tema y Carátula Físicas -->
+      <div class="song-header">
+        <div class="mini-cover">
+          <img src="franceslimon.jpg" alt="Portada Francés Limón" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+        </div>
+        <div class="song-meta">
+          <h1 id="song-title">Francés Limón</h1>
+          <p class="artist-name">Enanitos Verdes</p>
+        </div>
+      </div>
+
+      <!-- Sección Central: Ventana de Letras Desplazables (Estilo Cine/Karaoke) -->
+      <div class="lyrics-panel" aria-label="Letra de la canción">
+        <div class="lyrics-heading">
+          <span>Letra</span>
+          
+        </div>
+        <div class="lyrics-window">
+          <div id="lyrics-scroll" class="lyrics-scroll">
+            <!-- Inyección automática por JavaScript -->
+          </div>
+        </div>
+      </div>
+
+            <!-- Sección Inferior: Control de Tiempos y Botones -->
+      <footer class="player">
+        <div class="time-slider-row">
+          <!-- ESTA ES LA ETIQUETA QUE FALTA PARA QUE EL SCRIPT NO SE ROMPA -->
+          <span id="current-time">0:00</span>
+          
+          <div class="progress-wrap" id="progress-bar-click">
+            <div class="progress-track"><span id="progress"></span></div>
+          </div>
+          <span id="duration">1:59</span>
+        </div>
+
+        <div class="buttons-row">
+          <button id="previous" class="icon-button" type="button" aria-label="Línea anterior"><i class="fa-solid fa-backward-step"></i></button>
+          <button id="play" class="play-button" type="button" aria-label="Iniciar presentación"><i class="fa-solid fa-play"></i></button>
+          <button id="next" class="icon-button" type="button" aria-label="Línea siguiente"><i class="fa-solid fa-forward-step"></i></button>
+        </div>
+
+        <div class="volume-row" aria-label="Controles de audio">
+          <button id="repeat" class="mini-icon" type="button" aria-label="Repetir"><i class="fa-solid fa-repeat"></i></button>
+          <button id="shuffle" class="mini-icon" type="button" aria-label="Aleatorio"><i class="fa-solid fa-shuffle"></i></button>
+          <button id="mute" class="mini-icon" type="button" aria-label="Silenciar"><i class="fa-solid fa-volume-high"></i></button>
+          <input id="volume" class="volume-slider" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volumen">
+          <div class="speed-box">
+            <span id="speed-label">1.00x</span>
+            <input id="speed" class="speed-slider" type="range" min="0.5" max="2" step="0.25" value="1" aria-label="Velocidad de reproducción">
+          </div>
+        </div>
+        
+        <div class="status-row">
+          <span id="status">Pausa</span>
+        </div>
+      </footer>
+
+    </section>
+
+    <!-- Botones Flotantes del Lateral Derecho para Control Rápido -->
+    <div class="side-nav">
+      <button id="scroll-up" class="side-btn" aria-label="Subir">↑</button>
+      <button id="scroll-down" class="side-btn" aria-label="Bajar">↓</button>
+    </div>
+  </main>
+
+  <!-- Pista de música física oculta -->
+  <audio id="audio-track" src="musica.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
